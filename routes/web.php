@@ -1,12 +1,26 @@
 <?php
 
 use App\Http\Controllers\BTController;
+use App\Http\Controllers\ThucTapController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/lienhe', function(){
+    return view('lienhe');
+});
+
+Route::get('/loikhuyen', [ThucTapController::class, 'loikhuyen']);
+
+
+Route::get('/lt', function(){
+    $kq = DB::table('loaiTin')->select('id', 'ten')->get();
+    return view('lt', ['kq' => $kq]);
+});
+
 
 
 
