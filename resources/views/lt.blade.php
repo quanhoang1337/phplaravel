@@ -1,6 +1,5 @@
 @foreach ($kq as $row)
     {{$row->ten}} <br>
-
 @endforeach
 
 <hr>

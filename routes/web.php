@@ -5,6 +5,16 @@ use App\Http\Controllers\ThucTapController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
+// Route::view('/chao', 'xinchao');
+
+Route::get('/chuc', function () {
+    $str = "Chúc mừng năm mới ";
+    $t = "Chào bạn ";
+    return view('chuc', ['title' => $t, 'content' => $str]);
+});
+
+Route::get('/cong/{a}/{b}', [ThucTapController::class, 'cong2so']);
+
 Route::get('/home', function () {
     return view('home');
 });
@@ -17,18 +27,11 @@ Route::get('/loikhuyen', [ThucTapController::class, 'loikhuyen']);
 
 
 Route::get('/lt', function(){
-    $kq = DB::table('loaiTin')->select('id', 'ten')->get();
+    $kq = DB::table('loaitin')->select('id', 'ten')->get();
     return view('lt', ['kq' => $kq]);
 });
 
-
-
-
-
-Route::get('/baitap/{a}/{b}', [BTController::class, 'tich2so']);
-
-
-
+Route::get('/tich/{a}/{b}', [BTController::class, 'tich2so']);
 
 
 Route::get('/db1', function () {
